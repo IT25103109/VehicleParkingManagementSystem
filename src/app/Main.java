@@ -12,7 +12,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         VehicleService vehicleService = new VehicleService();
-
         int choice;
 
         do {
@@ -20,12 +19,18 @@ public class Main {
             System.out.println("1. Add Vehicle");
             System.out.println("2. Display All Vehicles");
             System.out.println("3. Search Vehicle");
-            System.out.println("4. Delete Vehicle");
-            System.out.println("5. Exit");
+            System.out.println("4. Update Vehicle");
+            System.out.println("5. Delete Vehicle");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
 
+            while (!input.hasNextInt()) {
+                System.out.print("Please enter a valid number: ");
+                input.next();
+            }
+
             choice = input.nextInt();
-            input.nextLine(); // clear newline
+            input.nextLine();
 
             switch (choice) {
                 case 1:
@@ -69,7 +74,7 @@ public class Main {
                     vehicle foundVehicle = vehicleService.searchVehicle(searchNumber);
 
                     if (foundVehicle != null) {
-                        System.out.println("Vehicle found:");
+                        System.out.println("\nVehicle found:");
                         System.out.println(foundVehicle);
                     } else {
                         System.out.println("Vehicle not found.");
@@ -77,12 +82,26 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Enter vehicle number to delete: ");
-                    String deleteNumber = input.nextLine();
-                    vehicleService.deleteVehicle(deleteNumber);
+                    System.out.print("Enter vehicle number to update: ");
+                    String updateNumber = input.nextLine();
+
+                    System.out.print("Enter new owner name: ");
+                    String newOwner = input.nextLine();
+
+                    System.out.print("Enter new color: ");
+                    String newColor = input.nextLine();
+
+                    vehicleService.updateVehicle(updateNumber, newOwner, newColor);
                     break;
 
                 case 5:
+                    System.out.print("Enter vehicle number to delete: ");
+                    String deleteNumber = input.nextLine();
+
+                    vehicleService.deleteVehicle(deleteNumber);
+                    break;
+
+                case 6:
                     System.out.println("Exiting system...");
                     break;
 
@@ -90,7 +109,7 @@ public class Main {
                     System.out.println("Invalid choice.");
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
         input.close();
     }

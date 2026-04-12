@@ -25,6 +25,18 @@ public class VehicleService {
         return null;
     }
 
+    public void updateVehicle(String vehicleNumber, String newOwnerName, String newColor) {
+        vehicle vehicle = searchVehicle(vehicleNumber);
+
+        if (vehicle != null) {
+            vehicle.setOwnerName(newOwnerName);
+            vehicle.setColor(newColor);
+            System.out.println("Vehicle updated successfully.");
+        } else {
+            System.out.println("Vehicle not found.");
+        }
+    }
+
     public void deleteVehicle(String vehicleNumber) {
         vehicle vehicle = searchVehicle(vehicleNumber);
 
@@ -42,7 +54,7 @@ public class VehicleService {
             return;
         }
 
-        System.out.println("Vehicle List:");
+        System.out.println("\n--- Vehicle List ---");
         for (vehicle vehicle : vehicleList) {
             System.out.println(vehicle);
         }
