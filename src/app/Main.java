@@ -1,5 +1,6 @@
 package app;
 
+import model.SUV;
 import model.bike;
 import model.Bus;
 import model.car;
@@ -41,7 +42,7 @@ public class Main {
                     vehicle vehicle = null;
 
                     while (true) {
-                        System.out.print("Enter vehicle type (Car/Bike/Van/Bus/Lorry/ThreeWheeler): ");
+                        System.out.print("Enter vehicle type (Car/Bike/Van/Bus/Lorry/ThreeWheeler/SUV): ");
                         type = input.nextLine().trim();
 
                         if (type.equalsIgnoreCase("Car") ||
@@ -49,7 +50,9 @@ public class Main {
                                 type.equalsIgnoreCase("Van") ||
                                 type.equalsIgnoreCase("Bus") ||
                                 type.equalsIgnoreCase("Lorry") ||
-                                type.equalsIgnoreCase("ThreeWheeler")) {
+                                type.equalsIgnoreCase("ThreeWheeler")||
+                                type.equalsIgnoreCase("SUV")) {
+
                             break;
                         } else {
                             System.out.println("Invalid vehicle type. Please enter a valid type.");
@@ -67,6 +70,8 @@ public class Main {
 
                     if (type.equalsIgnoreCase("Car")) {
                         vehicle = new car(vehicleNumber, ownerName, color);
+                    } else if (type.equalsIgnoreCase("SUV")) {
+                        vehicle = new SUV(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Bike")) {
                         vehicle = new bike(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Van")) {
@@ -123,8 +128,7 @@ public class Main {
                 case 6:
                     System.out.println("Exiting system...");
                     break;
-
-                default:
+                    default:
                     System.out.println("Invalid choice.");
             }
 
