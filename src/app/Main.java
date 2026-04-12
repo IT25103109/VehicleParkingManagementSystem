@@ -1,7 +1,10 @@
 package app;
 
 import model.bike;
+import model.Bus;
 import model.car;
+import model.Lorry;
+import model.ThreeWheeler;
 import model.van;
 import model.vehicle;
 import service.VehicleService;
@@ -34,8 +37,24 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter vehicle type (Car/Bike/Van): ");
-                    String type = input.nextLine();
+                    String type;
+                    vehicle vehicle = null;
+
+                    while (true) {
+                        System.out.print("Enter vehicle type (Car/Bike/Van/Bus/Lorry/ThreeWheeler): ");
+                        type = input.nextLine().trim();
+
+                        if (type.equalsIgnoreCase("Car") ||
+                                type.equalsIgnoreCase("Bike") ||
+                                type.equalsIgnoreCase("Van") ||
+                                type.equalsIgnoreCase("Bus") ||
+                                type.equalsIgnoreCase("Lorry") ||
+                                type.equalsIgnoreCase("ThreeWheeler")) {
+                            break;
+                        } else {
+                            System.out.println("Invalid vehicle type. Please enter a valid type.");
+                        }
+                    }
 
                     System.out.print("Enter vehicle number: ");
                     String vehicleNumber = input.nextLine();
@@ -46,21 +65,21 @@ public class Main {
                     System.out.print("Enter color: ");
                     String color = input.nextLine();
 
-                    vehicle vehicle = null;
-
                     if (type.equalsIgnoreCase("Car")) {
                         vehicle = new car(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Bike")) {
                         vehicle = new bike(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Van")) {
                         vehicle = new van(vehicleNumber, ownerName, color);
-                    } else {
-                        System.out.println("Invalid vehicle type.");
+                    } else if (type.equalsIgnoreCase("Bus")) {
+                        vehicle = new Bus(vehicleNumber, ownerName, color);
+                    } else if (type.equalsIgnoreCase("Lorry")) {
+                        vehicle = new Lorry(vehicleNumber, ownerName, color);
+                    } else if (type.equalsIgnoreCase("ThreeWheeler")) {
+                        vehicle = new ThreeWheeler(vehicleNumber, ownerName, color);
                     }
 
-                    if (vehicle != null) {
-                        vehicleService.addVehicle(vehicle);
-                    }
+                    vehicleService.addVehicle(vehicle);
                     break;
 
                 case 2:

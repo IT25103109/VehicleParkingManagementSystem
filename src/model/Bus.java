@@ -1,0 +1,7 @@
+package model;
+
+public class Bus extends vehicle {
+    public Bus(String vehicleNumber, String ownerName, String color) {
+        super(vehicleNumber, ownerName, color, "Bus");
+    }
+}
