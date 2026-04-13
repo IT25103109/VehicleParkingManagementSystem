@@ -114,16 +114,25 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Enter vehicle number to search: ");
-                    String searchNumber = input.nextLine();
+                    while (true) {
+                        System.out.print("Enter vehicle number to search: ");
+                        String searchNumber = input.nextLine().trim();
 
-                    vehicle foundVehicle = vehicleService.searchVehicle(searchNumber);
+                        vehicle foundVehicle = vehicleService.searchVehicle(searchNumber);
 
-                    if (foundVehicle != null) {
-                        System.out.println("\nVehicle found:");
-                        System.out.println(foundVehicle);
-                    } else {
-                        System.out.println("Vehicle not found.");
+                        if (foundVehicle != null) {
+                            System.out.println("\nVehicle found:");
+                            System.out.println(foundVehicle);
+                            break;
+                        } else {
+                            System.out.println("Vehicle not found.");
+                            System.out.print("Do you want to try again? (yes/no): ");
+                            String tryAgain = input.nextLine().trim();
+
+                            if (!tryAgain.equalsIgnoreCase("yes")) {
+                                break;
+                            }
+                        }
                     }
                     break;
 
