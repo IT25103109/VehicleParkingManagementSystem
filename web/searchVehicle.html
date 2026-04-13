@@ -7,35 +7,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page">
-    <div class="container">
-        <div class="page-header">
-            <h1>Search Vehicle</h1>
-            <p>Search for a vehicle using its number and view its saved details.</p>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-badge">Dashboard</span>
+            <h1>Vehicle Manager</h1>
+            <p>Modern frontend demo for vehicle parking management.</p>
         </div>
 
-        <div class="content">
-            <div class="form-card">
-                <form id="searchForm">
-                    <div class="form-group">
-                        <label for="searchNumber">Vehicle Number</label>
-                        <input type="text" id="searchNumber" placeholder="Enter vehicle number">
-                    </div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">🏠 Home</a>
+            <a href="addVehicle.html" class="nav-link">➕ Add Vehicle</a>
+            <a href="searchVehicle.html" class="nav-link active">🔍 Search Vehicle</a>
+            <a href="viewVehicles.html" class="nav-link">📋 View Vehicles</a>
+        </nav>
 
-                    <div class="button-row">
-                        <button type="submit" class="primary-btn">Search Vehicle</button>
-                    </div>
-                </form>
+        <div class="sidebar-widget">
+            <span class="widget-label">Live Time</span>
+            <div id="liveClock" class="live-clock">--:--:--</div>
+            <div id="liveDate" class="live-date">--</div>
+        </div>
+    </aside>
 
-                <div class="result-box">
-                    <h3>Search Result</h3>
-                    <p id="searchResult">Vehicle details will appear here after searching.</p>
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h2>Search Vehicle</h2>
+                <p>Find saved vehicle data instantly by vehicle number.</p>
+            </div>
+            <div class="header-pill">Quick Search</div>
+        </div>
+
+        <section class="content-card card-section">
+            <div class="two-column-layout">
+                <div>
+                    <form id="searchForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="searchNumber">Vehicle Number</label>
+                            <input type="text" id="searchNumber" placeholder="Ex: CAB-1234">
+                        </div>
+
+                        <div class="button-row">
+                            <button type="submit" class="btn primary-btn">Search</button>
+                            <a href="index.html" class="btn secondary-btn">Back to Home</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="result-card">
+                    <div class="section-row">
+                        <h3>Search Result</h3>
+                        <span class="mini-badge">Live</span>
+                    </div>
+                    <div id="searchResult" class="result-content">
+                        Vehicle details will appear here.
+                    </div>
                 </div>
             </div>
-
-            <a class="back-link" href="index.html">← Back to Home</a>
-        </div>
-    </div>
+        </section>
+    </main>
 </div>
 
 <script src="script.js"></script>

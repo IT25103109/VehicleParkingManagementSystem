@@ -7,56 +7,107 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page">
-    <div class="container">
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-badge">Dashboard</span>
+            <h1>Vehicle Manager</h1>
+            <p>Modern frontend demo for vehicle parking management.</p>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">🏠 Home</a>
+            <a href="addVehicle.html" class="nav-link">➕ Add Vehicle</a>
+            <a href="searchVehicle.html" class="nav-link">🔍 Search Vehicle</a>
+            <a href="viewVehicles.html" class="nav-link active">📋 View Vehicles</a>
+        </nav>
+
+        <div class="sidebar-widget">
+            <span class="widget-label">Live Time</span>
+            <div id="liveClock" class="live-clock">--:--:--</div>
+            <div id="liveDate" class="live-date">--</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
         <div class="page-header">
-            <h1>Edit Vehicle</h1>
-            <p>Update the selected vehicle record and save the new information.</p>
-        </div>
-
-        <div class="content">
-            <div class="form-card">
-                <form id="editVehicleForm">
-                    <div class="form-group">
-                        <label for="editType">Vehicle Type</label>
-                        <select id="editType">
-                            <option value="">Select vehicle type</option>
-                            <option value="Car">Car</option>
-                            <option value="Bike">Bike</option>
-                            <option value="Van">Van</option>
-                            <option value="Bus">Bus</option>
-                            <option value="Lorry">Lorry</option>
-                            <option value="ThreeWheeler">ThreeWheeler</option>
-                            <option value="SUV">SUV</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="editVehicleNumber">Vehicle Number</label>
-                        <input type="text" id="editVehicleNumber" placeholder="Enter vehicle number">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="editOwnerName">Owner Name</label>
-                        <input type="text" id="editOwnerName" placeholder="Enter owner name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="editColor">Color</label>
-                        <input type="text" id="editColor" placeholder="Enter color">
-                    </div>
-
-                    <div class="button-row">
-                        <button type="submit" class="primary-btn">Update Vehicle</button>
-                    </div>
-                </form>
-
-                <div id="editMessage" class="message"></div>
+            <div>
+                <h2>Edit Vehicle</h2>
+                <p>Update an existing vehicle with a live preview panel.</p>
             </div>
-
-            <a class="back-link" href="viewVehicles.html">← Back to Vehicles</a>
+            <div class="header-pill">Edit Mode</div>
         </div>
-    </div>
+
+        <section class="content-card card-section">
+            <div class="two-column-layout">
+                <div>
+                    <form id="editVehicleForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="editType">Vehicle Type</label>
+                            <select id="editType">
+                                <option value="">Select vehicle type</option>
+                                <option value="Car">Car</option>
+                                <option value="Bike">Bike</option>
+                                <option value="Van">Van</option>
+                                <option value="Bus">Bus</option>
+                                <option value="Lorry">Lorry</option>
+                                <option value="ThreeWheeler">ThreeWheeler</option>
+                                <option value="SUV">SUV</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editVehicleNumber">Vehicle Number</label>
+                            <input type="text" id="editVehicleNumber" placeholder="Ex: CAB-1234">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editOwnerName">Owner Name</label>
+                            <input type="text" id="editOwnerName" placeholder="Enter owner name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editColor">Color</label>
+                            <input type="text" id="editColor" placeholder="Ex: White">
+                        </div>
+
+                        <div class="button-row">
+                            <button type="submit" class="btn primary-btn">Update Vehicle</button>
+                            <a href="viewVehicles.html" class="btn secondary-btn">Back to Vehicles</a>
+                        </div>
+                    </form>
+
+                    <div id="editMessage" class="message-box"></div>
+                </div>
+
+                <div class="preview-card">
+                    <div class="section-row">
+                        <h3>Updated Preview</h3>
+                        <span class="mini-badge">Auto Update</span>
+                    </div>
+
+                    <div class="preview-grid">
+                        <div class="preview-item">
+                            <span class="preview-label">Type</span>
+                            <span id="editPreviewType" class="preview-value">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Vehicle Number</span>
+                            <span id="editPreviewNumber" class="preview-value">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Owner</span>
+                            <span id="editPreviewOwner" class="preview-value">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Color</span>
+                            <span id="editPreviewColor" class="preview-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </div>
 
 <script src="script.js"></script>

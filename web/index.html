@@ -7,67 +7,88 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page">
-    <div class="container">
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-badge">Dashboard</span>
+            <h1>Vehicle Manager</h1>
+            <p>Modern frontend demo for vehicle parking management.</p>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">🏠 Home</a>
+            <a href="addVehicle.html" class="nav-link">➕ Add Vehicle</a>
+            <a href="searchVehicle.html" class="nav-link">🔍 Search Vehicle</a>
+            <a href="viewVehicles.html" class="nav-link">📋 View Vehicles</a>
+        </nav>
+
+        <div class="sidebar-widget">
+            <span class="widget-label">Live Time</span>
+            <div id="liveClock" class="live-clock">--:--:--</div>
+            <div id="liveDate" class="live-date">--</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
         <div class="page-header">
-            <h1>Vehicle Parking Management System</h1>
-            <p>Professional vehicle record management with clean navigation and quick access.</p>
+            <div>
+                <h2>Dashboard Overview</h2>
+                <p>Quick access, live summaries, and recent activity.</p>
+            </div>
+            <div class="header-pill">Frontend Prototype</div>
         </div>
 
-        <div class="content">
-            <h2 class="section-title">Dashboard</h2>
-            <p class="subtitle">Choose an action below to manage your vehicle records easily.</p>
-
-            <div class="stats-row">
+        <section class="content-card card-section">
+            <div class="stats-grid">
                 <div class="stat-box">
-                    <span class="number">3</span>
-                    <span class="label">Main Modules</span>
+                    <span class="number" id="dashboardTotal">0</span>
+                    <span class="label">Total Vehicles</span>
                 </div>
                 <div class="stat-box">
-                    <span class="number">CRUD</span>
-                    <span class="label">Core Features</span>
+                    <span class="number" id="dashboardCars">0</span>
+                    <span class="label">Cars</span>
                 </div>
                 <div class="stat-box">
-                    <span class="number">Fast</span>
-                    <span class="label">Simple Flow</span>
+                    <span class="number" id="dashboardBikes">0</span>
+                    <span class="label">Bikes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" id="dashboardLarge">0</span>
+                    <span class="label">Large Vehicles</span>
                 </div>
             </div>
 
-            <div class="grid-cards">
-                <a class="card-link" href="addVehicle.html">
-                    <div class="feature-card">
-                        <div class="feature-icon">➕</div>
-                        <div>
-                            <h3>Add Vehicle</h3>
-                            <p>Create a new vehicle record with type, number, owner, and color details.</p>
-                        </div>
-                    </div>
+            <div class="dashboard-grid">
+                <a href="addVehicle.html" class="dashboard-box">
+                    <div class="box-icon">➕</div>
+                    <h3>Add Vehicle</h3>
+                    <p>Create a new vehicle record with type, number, owner, and color details.</p>
                 </a>
 
-                <a class="card-link" href="searchVehicle.html">
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
-                        <div>
-                            <h3>Search Vehicle</h3>
-                            <p>Quickly find a saved vehicle using its vehicle number.</p>
-                        </div>
-                    </div>
+                <a href="searchVehicle.html" class="dashboard-box">
+                    <div class="box-icon">🔍</div>
+                    <h3>Search Vehicle</h3>
+                    <p>Search quickly by vehicle number and view saved details instantly.</p>
                 </a>
 
-                <a class="card-link" href="viewVehicles.html">
-                    <div class="feature-card">
-                        <div class="feature-icon">📋</div>
-                        <div>
-                            <h3>View Vehicles</h3>
-                            <p>View all records in a clean table and use edit or delete actions easily.</p>
-                        </div>
-                    </div>
+                <a href="viewVehicles.html" class="dashboard-box">
+                    <div class="box-icon">📋</div>
+                    <h3>View Vehicles</h3>
+                    <p>Browse all vehicles, filter records, and use edit or delete actions.</p>
                 </a>
             </div>
 
-            <p class="footer-note">Frontend prototype version for presentation and UI demonstration.</p>
-        </div>
-    </div>
+            <div class="recent-activity-card top-space">
+                <div class="section-row">
+                    <h3>Recent Activity</h3>
+                    <span class="mini-badge">Live</span>
+                </div>
+                <ul id="recentActivityList" class="activity-list"></ul>
+            </div>
+        </section>
+    </main>
 </div>
+
+<script src="script.js"></script>
 </body>
 </html>

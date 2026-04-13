@@ -7,42 +7,104 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page">
-    <div class="container large-container">
-        <div class="page-header">
-            <h1>Vehicle Records</h1>
-            <p>View all saved records and manage them using edit or delete actions.</p>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-badge">Dashboard</span>
+            <h1>Vehicle Manager</h1>
+            <p>Modern frontend demo for vehicle parking management.</p>
         </div>
 
-        <div class="content">
-            <div class="table-card">
-                <div class="table-toolbar">
-                    <div>
-                        <h2>Saved Vehicles</h2>
-                        <p>Manage the vehicle list in a clean professional table.</p>
-                    </div>
-                    <span class="badge">CRUD Ready</span>
-                </div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">🏠 Home</a>
+            <a href="addVehicle.html" class="nav-link">➕ Add Vehicle</a>
+            <a href="searchVehicle.html" class="nav-link">🔍 Search Vehicle</a>
+            <a href="viewVehicles.html" class="nav-link active">📋 View Vehicles</a>
+        </nav>
 
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Vehicle Number</th>
-                        <th>Owner Name</th>
-                        <th>Color</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody id="vehicleTableBody"></tbody>
-                </table>
+        <div class="sidebar-widget">
+            <span class="widget-label">Live Time</span>
+            <div id="liveClock" class="live-clock">--:--:--</div>
+            <div id="liveDate" class="live-date">--</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h2>Vehicle Records</h2>
+                <p>Use live filters, quick actions, and updated stats.</p>
+            </div>
+            <div class="header-pill">Live Components</div>
+        </div>
+
+        <section class="content-card card-section">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="number" id="vehicleCount">0</span>
+                    <span class="label">Total Vehicles</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" id="carsCount">0</span>
+                    <span class="label">Cars</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" id="bikesCount">0</span>
+                    <span class="label">Bikes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" id="largeCount">0</span>
+                    <span class="label">Large Vehicles</span>
+                </div>
             </div>
 
-            <div id="noDataMessage" class="empty-box">No vehicle data added yet.</div>
+            <div class="table-card top-space">
+                <div class="table-toolbar">
+                    <div>
+                        <h3>Saved Vehicles</h3>
+                        <p>Filter and manage records in real time.</p>
+                    </div>
+                    <a href="addVehicle.html" class="btn small-btn">+ Add New</a>
+                </div>
 
-            <a class="back-link" href="index.html">← Back to Home</a>
-        </div>
-    </div>
+                <div class="filter-bar">
+                    <input type="text" id="tableSearch" placeholder="Live search by vehicle number, owner, or color">
+                    <select id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="Car">Car</option>
+                        <option value="Bike">Bike</option>
+                        <option value="Van">Van</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Lorry">Lorry</option>
+                        <option value="ThreeWheeler">ThreeWheeler</option>
+                        <option value="SUV">SUV</option>
+                    </select>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Vehicle Number</th>
+                            <th>Owner Name</th>
+                            <th>Color</th>
+                            <th>Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="vehicleTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="noDataMessage" class="empty-state">No vehicle data added yet.</div>
+
+            <div class="button-row top-space">
+                <a href="index.html" class="btn secondary-btn">Back to Home</a>
+            </div>
+        </section>
+    </main>
 </div>
 
 <script src="script.js"></script>
