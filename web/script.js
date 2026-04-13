@@ -40,35 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("vehicles", JSON.stringify(vehicles));
 
             message.textContent = "Vehicle added successfully.";
-
             vehicleForm.reset();
         });
     }
 
     if (vehicleTableBody) {
-        let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
-        const noDataMessage = document.getElementById("noDataMessage");
-
-        vehicleTableBody.innerHTML = "";
-
-        if (vehicles.length === 0) {
-            noDataMessage.style.display = "block";
-        } else {
-            noDataMessage.style.display = "none";
-
-            vehicles.forEach(vehicle => {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${vehicle.type}</td>
-                    <td>${vehicle.vehicleNumber}</td>
-                    <td>${vehicle.ownerName}</td>
-                    <td>${vehicle.color}</td>
-                `;
-
-                vehicleTableBody.appendChild(row);
-            });
-        }
+        loadVehicles();
     }
 
     if (searchForm) {
@@ -93,3 +70,40 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+function loadVehicles() {
+    const vehicleTableBody = document.getElementById("vehicleTableBody");
+    const noDataMessage = document.getElementById("noDataMessage");
+    let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+
+    vehicleTableBody.innerHTML = "";
+
+    if (vehicles.length === 0) {
+        noDataMessage.style.display = "block";
+    } else {
+        noDataMessage.style.display = "none";
+
+        vehicles.forEach((vehicle, index) => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${vehicle.type}</td>
+                <td>${vehicle.vehicleNumber}</td>
+                <td>${vehicle.ownerName}</td>
+                <td>${vehicle.color}</td>
+                <td><button onclick="deleteVehicle(${index})">Delete</button></td>
+            `;
+
+            vehicleTableBody.appendChild(row);
+        });
+    }
+}
+
+function deleteVehicle(index) {
+    let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+
+    vehicles.splice(index, 1);
+    localStorage.setItem("vehicles", JSON.stringify(vehicles));
+
+    loadVehicles();
+}
