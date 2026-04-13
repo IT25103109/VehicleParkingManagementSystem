@@ -1,12 +1,27 @@
 package service;
 
 import model.vehicle;
+import model.car;
+import model.bike;
+import model.van;
+import model.Bus;
+import model.Lorry;
+import model.SUV;
+import model.ThreeWheeler;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.*;
 
 public class VehicleService {
     private ArrayList<vehicle> vehicleList = new ArrayList<>();
+    private final String FILE_NAME = "vehicles.txt";
+
+    public VehicleService() {
+        loadVehiclesFromFile();
+    }
+
 
     public void addVehicle(vehicle vehicle) {
         if (searchVehicle(vehicle.getVehicleNumber()) != null) {
@@ -15,6 +30,7 @@ public class VehicleService {
         }
 
         vehicleList.add(vehicle);
+        saveVehiclesToFile();
         System.out.println("Vehicle added successfully.");
     }
 
@@ -33,6 +49,7 @@ public class VehicleService {
         if (vehicle != null) {
             vehicle.setOwnerName(newOwnerName);
             vehicle.setColor(newColor);
+            saveVehiclesToFile();
             System.out.println("Vehicle updated successfully.");
         } else {
             System.out.println("Vehicle not found.");
@@ -44,6 +61,7 @@ public class VehicleService {
 
         if (vehicle != null) {
             vehicleList.remove(vehicle);
+            saveVehiclesToFile();
             System.out.println("Vehicle deleted successfully.");
         } else {
             System.out.println("Vehicle not found.");
@@ -97,4 +115,69 @@ public class VehicleService {
 
         System.out.println("Total Vehicles: " + vehicleList.size());
     }
+
+    private void saveVehiclesToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            for (vehicle vehicle : vehicleList) {
+                writer.write(vehicle.getType() + "," +
+                        vehicle.getVehicleNumber() + "," +
+                        vehicle.getOwnerName() + "," +
+                        vehicle.getColor());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving vehicles: " + e.getMessage());
+        }
+    }
+
+    private void loadVehiclesFromFile() {
+        File file = new File(FILE_NAME);
+
+        if (!file.exists()) {
+            return;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                if (data.length == 4) {
+                    String type = data[0];
+                    String vehicleNumber = data[1];
+                    String ownerName = data[2];
+                    String color = data[3];
+
+                    vehicle vehicle = createVehicleByType(type, vehicleNumber, ownerName, color);
+
+                    if (vehicle != null) {
+                        vehicleList.add(vehicle);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error loading vehicles: " + e.getMessage());
+        }
+    }
+    private vehicle createVehicleByType(String type, String vehicleNumber, String ownerName, String color) {
+        switch (type.toLowerCase()) {
+            case "car":
+                return new car(vehicleNumber, ownerName, color);
+            case "bike":
+                return new bike(vehicleNumber, ownerName, color);
+            case "van":
+                return new van(vehicleNumber, ownerName, color);
+            case "bus":
+                return new Bus(vehicleNumber, ownerName, color);
+            case "lorry":
+                return new Lorry(vehicleNumber, ownerName, color);
+            case "threewheeler":
+                return new ThreeWheeler(vehicleNumber, ownerName, color);
+            case "suv":
+                return new SUV(vehicleNumber, ownerName, color);
+            default:
+                return null;
+        }
+    }
 }
+
