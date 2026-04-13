@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const vehicleTableBody = document.getElementById("vehicleTableBody");
     const editVehicleForm = document.getElementById("editVehicleForm");
 
-   // if (vehicleForm) {
-      //  vehicleForm.addEventListener("submit", function (event) {
-            //event.preventDefault();
+    if (vehicleForm) {
+        vehicleForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
             const type = document.getElementById("type").value.trim();
             const vehicleNumber = document.getElementById("vehicleNumber").value.trim();

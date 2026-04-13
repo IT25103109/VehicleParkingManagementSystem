@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Vehicle</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -8,9 +10,9 @@
 <div class="container">
     <h1>Add Vehicle</h1>
 
-    <form action="addVehicle" method="post">
+    <form id="vehicleForm">
         <label>Vehicle Type</label><br>
-        <select id="type" name="type">
+        <select id="type">
             <option value="">Select vehicle type</option>
             <option value="Car">Car</option>
             <option value="Bike">Bike</option>
@@ -22,13 +24,13 @@
         </select><br><br>
 
         <label>Vehicle Number</label><br>
-        <input type="text" id="vehicleNumber" name="vehicleNumber" placeholder="Enter vehicle number"><br><br>
+        <input type="text" id="vehicleNumber" placeholder="Enter vehicle number"><br><br>
 
         <label>Owner Name</label><br>
-        <input type="text" id="ownerName" name="ownerName" placeholder="Enter owner name"><br><br>
+        <input type="text" id="ownerName" placeholder="Enter owner name"><br><br>
 
         <label>Color</label><br>
-        <input type="text" id="color" name="color" placeholder="Enter color"><br><br>
+        <input type="text" id="color" placeholder="Enter color"><br><br>
 
         <button type="submit">Add Vehicle</button>
     </form>
