@@ -9,36 +9,44 @@
 <body>
 <div class="container">
     <h1>Edit Vehicle</h1>
+    <p class="subtitle">Update the selected vehicle details</p>
 
     <form id="editVehicleForm">
-        <label>Vehicle Type</label><br>
-        <select id="editType">
-            <option value="">Select vehicle type</option>
-            <option value="Car">Car</option>
-            <option value="Bike">Bike</option>
-            <option value="Van">Van</option>
-            <option value="Bus">Bus</option>
-            <option value="Lorry">Lorry</option>
-            <option value="ThreeWheeler">ThreeWheeler</option>
-            <option value="SUV">SUV</option>
-        </select><br><br>
+        <div class="form-group">
+            <label for="editType">Vehicle Type</label>
+            <select id="editType">
+                <option value="">Select vehicle type</option>
+                <option value="Car">Car</option>
+                <option value="Bike">Bike</option>
+                <option value="Van">Van</option>
+                <option value="Bus">Bus</option>
+                <option value="Lorry">Lorry</option>
+                <option value="ThreeWheeler">ThreeWheeler</option>
+                <option value="SUV">SUV</option>
+            </select>
+        </div>
 
-        <label>Vehicle Number</label><br>
-        <input type="text" id="editVehicleNumber" placeholder="Enter vehicle number"><br><br>
+        <div class="form-group">
+            <label for="editVehicleNumber">Vehicle Number</label>
+            <input type="text" id="editVehicleNumber" placeholder="Enter vehicle number">
+        </div>
 
-        <label>Owner Name</label><br>
-        <input type="text" id="editOwnerName" placeholder="Enter owner name"><br><br>
+        <div class="form-group">
+            <label for="editOwnerName">Owner Name</label>
+            <input type="text" id="editOwnerName" placeholder="Enter owner name">
+        </div>
 
-        <label>Color</label><br>
-        <input type="text" id="editColor" placeholder="Enter color"><br><br>
+        <div class="form-group">
+            <label for="editColor">Color</label>
+            <input type="text" id="editColor" placeholder="Enter color">
+        </div>
 
         <button type="submit">Update Vehicle</button>
     </form>
 
-    <p id="editMessage"></p>
+    <div id="editMessage" class="message"></div>
 
-    <br>
-    <a href="viewVehicles.html">Back to Vehicles</a>
+    <a class="back-link" href="viewVehicles.html">← Back to Vehicles</a>
 </div>
 
 <script src="script.js"></script>

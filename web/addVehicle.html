@@ -9,36 +9,44 @@
 <body>
 <div class="container">
     <h1>Add Vehicle</h1>
+    <p class="subtitle">Enter vehicle details below</p>
 
     <form id="vehicleForm">
-        <label>Vehicle Type</label><br>
-        <select id="type">
-            <option value="">Select vehicle type</option>
-            <option value="Car">Car</option>
-            <option value="Bike">Bike</option>
-            <option value="Van">Van</option>
-            <option value="Bus">Bus</option>
-            <option value="Lorry">Lorry</option>
-            <option value="ThreeWheeler">ThreeWheeler</option>
-            <option value="SUV">SUV</option>
-        </select><br><br>
+        <div class="form-group">
+            <label for="type">Vehicle Type</label>
+            <select id="type">
+                <option value="">Select vehicle type</option>
+                <option value="Car">Car</option>
+                <option value="Bike">Bike</option>
+                <option value="Van">Van</option>
+                <option value="Bus">Bus</option>
+                <option value="Lorry">Lorry</option>
+                <option value="ThreeWheeler">ThreeWheeler</option>
+                <option value="SUV">SUV</option>
+            </select>
+        </div>
 
-        <label>Vehicle Number</label><br>
-        <input type="text" id="vehicleNumber" placeholder="Enter vehicle number"><br><br>
+        <div class="form-group">
+            <label for="vehicleNumber">Vehicle Number</label>
+            <input type="text" id="vehicleNumber" placeholder="Enter vehicle number">
+        </div>
 
-        <label>Owner Name</label><br>
-        <input type="text" id="ownerName" placeholder="Enter owner name"><br><br>
+        <div class="form-group">
+            <label for="ownerName">Owner Name</label>
+            <input type="text" id="ownerName" placeholder="Enter owner name">
+        </div>
 
-        <label>Color</label><br>
-        <input type="text" id="color" placeholder="Enter color"><br><br>
+        <div class="form-group">
+            <label for="color">Color</label>
+            <input type="text" id="color" placeholder="Enter color">
+        </div>
 
         <button type="submit">Add Vehicle</button>
     </form>
 
-    <p id="message"></p>
+    <div id="message" class="message"></div>
 
-    <br>
-    <a href="index.html">Back to Home</a>
+    <a class="back-link" href="index.html">← Back to Home</a>
 </div>
 
 <script src="script.js"></script>

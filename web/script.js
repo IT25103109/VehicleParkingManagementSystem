@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const message = document.getElementById("message");
 
             if (type === "" || vehicleNumber === "" || ownerName === "" || color === "") {
-                message.textContent = "Please fill all fields.";
+                showMessage(message, "Please fill all fields.", "error");
                 return;
             }
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (exists) {
-                message.textContent = "Vehicle already exists.";
+                showMessage(message, "Vehicle already exists.", "error");
                 return;
             }
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             vehicles.push(vehicle);
             localStorage.setItem("vehicles", JSON.stringify(vehicles));
 
-            message.textContent = "Vehicle added successfully.";
+            showMessage(message, "Vehicle added successfully.", "success");
             vehicleForm.reset();
         });
     }
@@ -63,8 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (foundVehicle) {
-                searchResult.textContent =
-                    `Type: ${foundVehicle.type}, Vehicle Number: ${foundVehicle.vehicleNumber}, Owner Name: ${foundVehicle.ownerName}, Color: ${foundVehicle.color}`;
+                searchResult.innerHTML =
+                    `<strong>Type:</strong> ${foundVehicle.type}<br>
+                     <strong>Vehicle Number:</strong> ${foundVehicle.vehicleNumber}<br>
+                     <strong>Owner Name:</strong> ${foundVehicle.ownerName}<br>
+                     <strong>Color:</strong> ${foundVehicle.color}`;
             } else {
                 searchResult.textContent = "Vehicle not found.";
             }
@@ -84,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
 
             if (index === null || vehicles[index] === undefined) {
-                editMessage.textContent = "Vehicle not found.";
+                showMessage(editMessage, "Vehicle not found.", "error");
                 return;
             }
 
@@ -94,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const updatedColor = document.getElementById("editColor").value.trim();
 
             if (updatedType === "" || updatedVehicleNumber === "" || updatedOwnerName === "" || updatedColor === "") {
-                editMessage.textContent = "Please fill all fields.";
+                showMessage(editMessage, "Please fill all fields.", "error");
                 return;
             }
 
@@ -104,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (duplicate) {
-                editMessage.textContent = "Another vehicle already uses this vehicle number.";
+                showMessage(editMessage, "Another vehicle already uses this number.", "error");
                 return;
             }
 
@@ -116,14 +119,19 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             localStorage.setItem("vehicles", JSON.stringify(vehicles));
-            editMessage.textContent = "Vehicle updated successfully.";
+            showMessage(editMessage, "Vehicle updated successfully.", "success");
 
             setTimeout(() => {
                 window.location.href = "viewVehicles.html";
-            }, 800);
+            }, 700);
         });
     }
 });
+
+function showMessage(element, text, type) {
+    element.textContent = text;
+    element.className = "message " + type;
+}
 
 function loadVehicles() {
     const vehicleTableBody = document.getElementById("vehicleTableBody");
@@ -146,8 +154,10 @@ function loadVehicles() {
                 <td>${vehicle.ownerName}</td>
                 <td>${vehicle.color}</td>
                 <td>
-                    <button onclick="editVehicle(${index})">Edit</button>
-                    <button onclick="deleteVehicle(${index})">Delete</button>
+                    <div class="action-buttons">
+                        <button type="button" onclick="editVehicle(${index})">Edit</button>
+                        <button type="button" class="danger-btn" onclick="deleteVehicle(${index})">Delete</button>
+                    </div>
                 </td>
             `;
 
@@ -158,6 +168,11 @@ function loadVehicles() {
 
 function deleteVehicle(index) {
     let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+
+    const confirmed = confirm("Are you sure you want to delete this vehicle?");
+    if (!confirmed) {
+        return;
+    }
 
     vehicles.splice(index, 1);
     localStorage.setItem("vehicles", JSON.stringify(vehicles));
