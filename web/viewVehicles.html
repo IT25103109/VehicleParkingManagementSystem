@@ -7,26 +7,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container large-container">
-    <h1>All Vehicles</h1>
-    <p class="subtitle">View, edit, or delete saved vehicle records</p>
+<div class="page">
+    <div class="container large-container">
+        <div class="page-header">
+            <h1>Vehicle Records</h1>
+            <p>View all saved records and manage them using edit or delete actions.</p>
+        </div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Type</th>
-            <th>Vehicle Number</th>
-            <th>Owner Name</th>
-            <th>Color</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody id="vehicleTableBody"></tbody>
-    </table>
+        <div class="content">
+            <div class="table-card">
+                <div class="table-toolbar">
+                    <div>
+                        <h2>Saved Vehicles</h2>
+                        <p>Manage the vehicle list in a clean professional table.</p>
+                    </div>
+                    <span class="badge">CRUD Ready</span>
+                </div>
 
-    <div id="noDataMessage" class="empty-box">No vehicle data added yet.</div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Vehicle Number</th>
+                        <th>Owner Name</th>
+                        <th>Color</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="vehicleTableBody"></tbody>
+                </table>
+            </div>
 
-    <a class="back-link" href="index.html">← Back to Home</a>
+            <div id="noDataMessage" class="empty-box">No vehicle data added yet.</div>
+
+            <a class="back-link" href="index.html">← Back to Home</a>
+        </div>
+    </div>
 </div>
 
 <script src="script.js"></script>

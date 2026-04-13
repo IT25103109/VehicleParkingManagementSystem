@@ -7,46 +7,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Edit Vehicle</h1>
-    <p class="subtitle">Update the selected vehicle details</p>
-
-    <form id="editVehicleForm">
-        <div class="form-group">
-            <label for="editType">Vehicle Type</label>
-            <select id="editType">
-                <option value="">Select vehicle type</option>
-                <option value="Car">Car</option>
-                <option value="Bike">Bike</option>
-                <option value="Van">Van</option>
-                <option value="Bus">Bus</option>
-                <option value="Lorry">Lorry</option>
-                <option value="ThreeWheeler">ThreeWheeler</option>
-                <option value="SUV">SUV</option>
-            </select>
+<div class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Edit Vehicle</h1>
+            <p>Update the selected vehicle record and save the new information.</p>
         </div>
 
-        <div class="form-group">
-            <label for="editVehicleNumber">Vehicle Number</label>
-            <input type="text" id="editVehicleNumber" placeholder="Enter vehicle number">
+        <div class="content">
+            <div class="form-card">
+                <form id="editVehicleForm">
+                    <div class="form-group">
+                        <label for="editType">Vehicle Type</label>
+                        <select id="editType">
+                            <option value="">Select vehicle type</option>
+                            <option value="Car">Car</option>
+                            <option value="Bike">Bike</option>
+                            <option value="Van">Van</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Lorry">Lorry</option>
+                            <option value="ThreeWheeler">ThreeWheeler</option>
+                            <option value="SUV">SUV</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editVehicleNumber">Vehicle Number</label>
+                        <input type="text" id="editVehicleNumber" placeholder="Enter vehicle number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editOwnerName">Owner Name</label>
+                        <input type="text" id="editOwnerName" placeholder="Enter owner name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editColor">Color</label>
+                        <input type="text" id="editColor" placeholder="Enter color">
+                    </div>
+
+                    <div class="button-row">
+                        <button type="submit" class="primary-btn">Update Vehicle</button>
+                    </div>
+                </form>
+
+                <div id="editMessage" class="message"></div>
+            </div>
+
+            <a class="back-link" href="viewVehicles.html">← Back to Vehicles</a>
         </div>
-
-        <div class="form-group">
-            <label for="editOwnerName">Owner Name</label>
-            <input type="text" id="editOwnerName" placeholder="Enter owner name">
-        </div>
-
-        <div class="form-group">
-            <label for="editColor">Color</label>
-            <input type="text" id="editColor" placeholder="Enter color">
-        </div>
-
-        <button type="submit">Update Vehicle</button>
-    </form>
-
-    <div id="editMessage" class="message"></div>
-
-    <a class="back-link" href="viewVehicles.html">← Back to Vehicles</a>
+    </div>
 </div>
 
 <script src="script.js"></script>

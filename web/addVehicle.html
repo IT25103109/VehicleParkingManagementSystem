@@ -7,46 +7,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Add Vehicle</h1>
-    <p class="subtitle">Enter vehicle details below</p>
-
-    <form id="vehicleForm">
-        <div class="form-group">
-            <label for="type">Vehicle Type</label>
-            <select id="type">
-                <option value="">Select vehicle type</option>
-                <option value="Car">Car</option>
-                <option value="Bike">Bike</option>
-                <option value="Van">Van</option>
-                <option value="Bus">Bus</option>
-                <option value="Lorry">Lorry</option>
-                <option value="ThreeWheeler">ThreeWheeler</option>
-                <option value="SUV">SUV</option>
-            </select>
+<div class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Add Vehicle</h1>
+            <p>Enter the vehicle information below to create a new record.</p>
         </div>
 
-        <div class="form-group">
-            <label for="vehicleNumber">Vehicle Number</label>
-            <input type="text" id="vehicleNumber" placeholder="Enter vehicle number">
+        <div class="content">
+            <div class="form-card">
+                <form id="vehicleForm">
+                    <div class="form-group">
+                        <label for="type">Vehicle Type</label>
+                        <select id="type">
+                            <option value="">Select vehicle type</option>
+                            <option value="Car">Car</option>
+                            <option value="Bike">Bike</option>
+                            <option value="Van">Van</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Lorry">Lorry</option>
+                            <option value="ThreeWheeler">ThreeWheeler</option>
+                            <option value="SUV">SUV</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vehicleNumber">Vehicle Number</label>
+                        <input type="text" id="vehicleNumber" placeholder="Enter vehicle number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ownerName">Owner Name</label>
+                        <input type="text" id="ownerName" placeholder="Enter owner name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <input type="text" id="color" placeholder="Enter color">
+                    </div>
+
+                    <div class="button-row">
+                        <button type="submit" class="primary-btn">Save Vehicle</button>
+                    </div>
+                </form>
+
+                <div id="message" class="message"></div>
+            </div>
+
+            <a class="back-link" href="index.html">← Back to Home</a>
         </div>
-
-        <div class="form-group">
-            <label for="ownerName">Owner Name</label>
-            <input type="text" id="ownerName" placeholder="Enter owner name">
-        </div>
-
-        <div class="form-group">
-            <label for="color">Color</label>
-            <input type="text" id="color" placeholder="Enter color">
-        </div>
-
-        <button type="submit">Add Vehicle</button>
-    </form>
-
-    <div id="message" class="message"></div>
-
-    <a class="back-link" href="index.html">← Back to Home</a>
+    </div>
 </div>
 
 <script src="script.js"></script>

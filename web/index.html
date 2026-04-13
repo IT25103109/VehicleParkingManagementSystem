@@ -7,31 +7,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Vehicle Parking Management System</h1>
-    <p class="subtitle">Manage vehicle records easily and quickly</p>
+<div class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Vehicle Parking Management System</h1>
+            <p>Professional vehicle record management with clean navigation and quick access.</p>
+        </div>
 
-    <div class="nav-grid">
-        <a class="card-link" href="addVehicle.html">
-            <div class="card-button">
-                <div class="card-title">Add Vehicle</div>
-                <div class="card-text">Create a new vehicle record</div>
-            </div>
-        </a>
+        <div class="content">
+            <h2 class="section-title">Dashboard</h2>
+            <p class="subtitle">Choose an action below to manage your vehicle records easily.</p>
 
-        <a class="card-link" href="searchVehicle.html">
-            <div class="card-button">
-                <div class="card-title">Search Vehicle</div>
-                <div class="card-text">Find a vehicle by number</div>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="number">3</span>
+                    <span class="label">Main Modules</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">CRUD</span>
+                    <span class="label">Core Features</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">Fast</span>
+                    <span class="label">Simple Flow</span>
+                </div>
             </div>
-        </a>
 
-        <a class="card-link" href="viewVehicles.html">
-            <div class="card-button">
-                <div class="card-title">View Vehicles</div>
-                <div class="card-text">See all saved vehicle records</div>
+            <div class="grid-cards">
+                <a class="card-link" href="addVehicle.html">
+                    <div class="feature-card">
+                        <div class="feature-icon">➕</div>
+                        <div>
+                            <h3>Add Vehicle</h3>
+                            <p>Create a new vehicle record with type, number, owner, and color details.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="card-link" href="searchVehicle.html">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <div>
+                            <h3>Search Vehicle</h3>
+                            <p>Quickly find a saved vehicle using its vehicle number.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="card-link" href="viewVehicles.html">
+                    <div class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <div>
+                            <h3>View Vehicles</h3>
+                            <p>View all records in a clean table and use edit or delete actions easily.</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </a>
+
+            <p class="footer-note">Frontend prototype version for presentation and UI demonstration.</p>
+        </div>
     </div>
 </div>
 </body>

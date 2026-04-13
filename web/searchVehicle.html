@@ -7,25 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Search Vehicle</h1>
-    <p class="subtitle">Find a saved vehicle by number</p>
-
-    <form id="searchForm">
-        <div class="form-group">
-            <label for="searchNumber">Vehicle Number</label>
-            <input type="text" id="searchNumber" placeholder="Enter vehicle number">
+<div class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Search Vehicle</h1>
+            <p>Search for a vehicle using its number and view its saved details.</p>
         </div>
 
-        <button type="submit">Search</button>
-    </form>
+        <div class="content">
+            <div class="form-card">
+                <form id="searchForm">
+                    <div class="form-group">
+                        <label for="searchNumber">Vehicle Number</label>
+                        <input type="text" id="searchNumber" placeholder="Enter vehicle number">
+                    </div>
 
-    <div class="result-box">
-        <h3 class="result-title">Search Result</h3>
-        <p id="searchResult">Vehicle details will appear here.</p>
+                    <div class="button-row">
+                        <button type="submit" class="primary-btn">Search Vehicle</button>
+                    </div>
+                </form>
+
+                <div class="result-box">
+                    <h3>Search Result</h3>
+                    <p id="searchResult">Vehicle details will appear here after searching.</p>
+                </div>
+            </div>
+
+            <a class="back-link" href="index.html">← Back to Home</a>
+        </div>
     </div>
-
-    <a class="back-link" href="index.html">← Back to Home</a>
 </div>
 
 <script src="script.js"></script>

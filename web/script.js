@@ -149,13 +149,13 @@ function loadVehicles() {
             const row = document.createElement("tr");
 
             row.innerHTML = `
-                <td>${vehicle.type}</td>
+                <td><span class="badge">${vehicle.type}</span></td>
                 <td>${vehicle.vehicleNumber}</td>
                 <td>${vehicle.ownerName}</td>
                 <td>${vehicle.color}</td>
                 <td>
                     <div class="action-buttons">
-                        <button type="button" onclick="editVehicle(${index})">Edit</button>
+                        <button type="button" class="secondary-btn" onclick="editVehicle(${index})">Edit</button>
                         <button type="button" class="danger-btn" onclick="deleteVehicle(${index})">Delete</button>
                     </div>
                 </td>
