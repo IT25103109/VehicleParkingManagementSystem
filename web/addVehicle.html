@@ -8,9 +8,9 @@
 <div class="container">
     <h1>Add Vehicle</h1>
 
-    <form id="vehicleForm">
+    <form action="addVehicle" method="post">
         <label>Vehicle Type</label><br>
-        <select id="type">
+        <select id="type" name="type">
             <option value="">Select vehicle type</option>
             <option value="Car">Car</option>
             <option value="Bike">Bike</option>
@@ -22,13 +22,13 @@
         </select><br><br>
 
         <label>Vehicle Number</label><br>
-        <input type="text" id="vehicleNumber" placeholder="Enter vehicle number"><br><br>
+        <input type="text" id="vehicleNumber" name="vehicleNumber" placeholder="Enter vehicle number"><br><br>
 
         <label>Owner Name</label><br>
-        <input type="text" id="ownerName" placeholder="Enter owner name"><br><br>
+        <input type="text" id="ownerName" name="ownerName" placeholder="Enter owner name"><br><br>
 
         <label>Color</label><br>
-        <input type="text" id="color" placeholder="Enter color"><br><br>
+        <input type="text" id="color" name="color" placeholder="Enter color"><br><br>
 
         <button type="submit">Add Vehicle</button>
     </form>
