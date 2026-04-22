@@ -1,15 +1,17 @@
 package app;
 
 import model.SUV;
-import model.bike;
+import model.Bike;
 import model.Bus;
-import model.car;
+import model.Car;
 import model.Lorry;
 import model.ThreeWheeler;
-import model.van;
-import model.vehicle;
+import model.Van;
+import model.Vehicle;
 import service.VehicleService;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -41,7 +43,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     String type;
-                    vehicle vehicle = null;
+                    Vehicle newVehicle = null;
 
                     while (true) {
                         System.out.print("Enter vehicle type (Car/Bike/Van/Bus/Lorry/ThreeWheeler/SUV): ");
@@ -52,15 +54,13 @@ public class Main {
                                 type.equalsIgnoreCase("Van") ||
                                 type.equalsIgnoreCase("Bus") ||
                                 type.equalsIgnoreCase("Lorry") ||
-                                type.equalsIgnoreCase("ThreeWheeler")||
+                                type.equalsIgnoreCase("ThreeWheeler") ||
                                 type.equalsIgnoreCase("SUV")) {
-
                             break;
                         } else {
                             System.out.println("Invalid vehicle type. Please enter a valid type.");
                         }
                     }
-
 
                     String vehicleNumber;
                     do {
@@ -89,28 +89,41 @@ public class Main {
                         }
                     } while (color.isEmpty());
 
-
                     if (type.equalsIgnoreCase("Car")) {
-                        vehicle = new car(vehicleNumber, ownerName, color);
+                        newVehicle = new Car(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("SUV")) {
-                        vehicle = new SUV(vehicleNumber, ownerName, color);
+                        newVehicle = new SUV(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Bike")) {
-                        vehicle = new bike(vehicleNumber, ownerName, color);
+                        newVehicle = new Bike(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Van")) {
-                        vehicle = new van(vehicleNumber, ownerName, color);
+                        newVehicle = new Van(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Bus")) {
-                        vehicle = new Bus(vehicleNumber, ownerName, color);
+                        newVehicle = new Bus(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("Lorry")) {
-                        vehicle = new Lorry(vehicleNumber, ownerName, color);
+                        newVehicle = new Lorry(vehicleNumber, ownerName, color);
                     } else if (type.equalsIgnoreCase("ThreeWheeler")) {
-                        vehicle = new ThreeWheeler(vehicleNumber, ownerName, color);
+                        newVehicle = new ThreeWheeler(vehicleNumber, ownerName, color);
                     }
 
-                    vehicleService.addVehicle(vehicle);
+                    boolean added = vehicleService.addVehicle(newVehicle);
+                    if (added) {
+                        System.out.println("Vehicle added successfully.");
+                    } else {
+                        System.out.println("Vehicle already exists.");
+                    }
                     break;
 
                 case 2:
-                    vehicleService.displayAllVehicles();
+                    List<Vehicle> allVehicles = vehicleService.getAllVehicles();
+
+                    if (allVehicles.isEmpty()) {
+                        System.out.println("No vehicles available.");
+                    } else {
+                        System.out.println("\n--- Vehicle List ---");
+                        for (Vehicle v : allVehicles) {
+                            System.out.println(v);
+                        }
+                    }
                     break;
 
                 case 3:
@@ -118,7 +131,7 @@ public class Main {
                         System.out.print("Enter vehicle number to search: ");
                         String searchNumber = input.nextLine().trim();
 
-                        vehicle foundVehicle = vehicleService.searchVehicle(searchNumber);
+                        Vehicle foundVehicle = vehicleService.searchVehicle(searchNumber);
 
                         if (foundVehicle != null) {
                             System.out.println("\nVehicle found:");
@@ -137,38 +150,97 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Enter vehicle number to update: ");
-                    String updateNumber = input.nextLine();
+                    String updateNumber;
+                    do {
+                        System.out.print("Enter vehicle number to update: ");
+                        updateNumber = input.nextLine().trim();
+                        if (updateNumber.isEmpty()) {
+                            System.out.println("Vehicle number cannot be empty.");
+                        }
+                    } while (updateNumber.isEmpty());
 
-                    System.out.print("Enter new owner name: ");
-                    String newOwner = input.nextLine();
+                    String newOwner;
+                    do {
+                        System.out.print("Enter new owner name: ");
+                        newOwner = input.nextLine().trim();
+                        if (newOwner.isEmpty()) {
+                            System.out.println("Owner name cannot be empty.");
+                        }
+                    } while (newOwner.isEmpty());
 
-                    System.out.print("Enter new color: ");
-                    String newColor = input.nextLine();
+                    String newColor;
+                    do {
+                        System.out.print("Enter new color: ");
+                        newColor = input.nextLine().trim();
+                        if (newColor.isEmpty()) {
+                            System.out.println("Color cannot be empty.");
+                        }
+                    } while (newColor.isEmpty());
 
-                    vehicleService.updateVehicle(updateNumber, newOwner, newColor);
+                    boolean updated = vehicleService.updateVehicle(updateNumber, newOwner, newColor);
+                    if (updated) {
+                        System.out.println("Vehicle updated successfully.");
+                    } else {
+                        System.out.println("Vehicle not found.");
+                    }
                     break;
 
                 case 5:
-                    System.out.print("Enter vehicle number to delete: ");
-                    String deleteNumber = input.nextLine();
+                    String deleteNumber;
+                    do {
+                        System.out.print("Enter vehicle number to delete: ");
+                        deleteNumber = input.nextLine().trim();
+                        if (deleteNumber.isEmpty()) {
+                            System.out.println("Vehicle number cannot be empty.");
+                        }
+                    } while (deleteNumber.isEmpty());
 
-                    vehicleService.deleteVehicle(deleteNumber);
+                    boolean deleted = vehicleService.deleteVehicle(deleteNumber);
+                    if (deleted) {
+                        System.out.println("Vehicle deleted successfully.");
+                    } else {
+                        System.out.println("Vehicle not found.");
+                    }
                     break;
 
                 case 6:
                     System.out.print("Enter vehicle type to display: ");
-                    String typeToDisplay = input.nextLine();
-                    vehicleService.displayVehiclesByType(typeToDisplay);
+                    String typeToDisplay = input.nextLine().trim();
+
+                    List<Vehicle> filteredVehicles = vehicleService.getVehiclesByType(typeToDisplay);
+
+                    if (filteredVehicles.isEmpty()) {
+                        System.out.println("No vehicles found for this type.");
+                    } else {
+                        System.out.println("\n--- Vehicles of type: " + typeToDisplay + " ---");
+                        for (Vehicle v : filteredVehicles) {
+                            System.out.println(v);
+                        }
+                    }
                     break;
 
                 case 7:
-                    vehicleService.displayVehicleCountSummary();
+                    Map<String, Integer> summary = vehicleService.getVehicleCountSummary();
+
+                    if (summary.isEmpty()) {
+                        System.out.println("No vehicles available.");
+                    } else {
+                        System.out.println("\n--- Vehicle Count Summary ---");
+                        int total = 0;
+                        for (Map.Entry<String, Integer> entry : summary.entrySet()) {
+                            System.out.println(entry.getKey() + ": " + entry.getValue());
+                            total += entry.getValue();
+                        }
+                        System.out.println("Total Vehicles: " + total);
+                    }
                     break;
 
                 case 8:
                     System.out.println("Exiting system...");
                     break;
+
+                default:
+                    System.out.println("Invalid choice. Please select between 1 and 8.");
             }
 
         } while (choice != 8);

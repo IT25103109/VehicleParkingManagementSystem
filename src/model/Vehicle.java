@@ -1,6 +1,6 @@
 package model;
 
-public class vehicle {
+public class Vehicle {
 
 
 
@@ -9,7 +9,7 @@ public class vehicle {
         private String color;
         private String type;
 
-        public vehicle(String vehicleNumber, String ownerName, String color, String type) {
+        public Vehicle(String vehicleNumber, String ownerName, String color, String type) {
             this.vehicleNumber = vehicleNumber;
             this.ownerName = ownerName;
             this.color = color;
