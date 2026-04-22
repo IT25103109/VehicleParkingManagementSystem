@@ -1,4 +1,4 @@
-package model;
+package com.parking.vehicleparkingsystem.model;
 
 
 

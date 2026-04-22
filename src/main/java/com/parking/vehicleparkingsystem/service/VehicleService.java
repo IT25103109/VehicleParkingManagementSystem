@@ -1,10 +1,14 @@
-package service;
+package com.parking.vehicleparkingsystem.service;
 
-import model.*;
-import model.Vehicle;
-import model.Car;
-import model.Bike;
-import model.Van;
+import com.parking.vehicleparkingsystem.model.Vehicle;
+import com.parking.vehicleparkingsystem.model.Car;
+import com.parking.vehicleparkingsystem.model.Bike;
+import com.parking.vehicleparkingsystem.model.Van;
+import com.parking.vehicleparkingsystem.model.Bus;
+import com.parking.vehicleparkingsystem.model.Lorry;
+import com.parking.vehicleparkingsystem.model.SUV;
+import com.parking.vehicleparkingsystem.model.ThreeWheeler;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.io.*;
 
+@Service
 public class VehicleService {
     private ArrayList<Vehicle> vehicleList = new ArrayList<>();
     private final String FILE_NAME = "vehicles.txt";

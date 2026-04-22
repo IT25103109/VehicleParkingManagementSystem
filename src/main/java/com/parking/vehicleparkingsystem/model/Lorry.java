@@ -1,4 +1,4 @@
-package model;
+package com.parking.vehicleparkingsystem.model;
 
 public class Lorry extends Vehicle {
     public Lorry(String vehicleNumber, String ownerName, String color) {

@@ -1,4 +1,4 @@
-package model;
+package com.parking.vehicleparkingsystem.model;
 
 public class ThreeWheeler extends Vehicle {
     public ThreeWheeler(String vehicleNumber, String ownerName, String color) {
