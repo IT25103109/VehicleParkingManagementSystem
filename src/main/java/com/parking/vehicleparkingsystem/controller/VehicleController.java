@@ -44,6 +44,27 @@ public class VehicleController {
         return "redirect:/vehicles";
     }
 
+    @GetMapping("/vehicles/edit")
+    public String showEditVehicleForm(@RequestParam String vehicleNumber, Model model) {
+        Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber);
+
+        if (vehicle == null) {
+            return "redirect:/vehicles";
+        }
+
+        model.addAttribute("vehicle", vehicle);
+        return "editVehicle";
+    }
+
+    @PostMapping("/vehicles/update")
+    public String updateVehicle(@RequestParam String vehicleNumber,
+                                @RequestParam String ownerName,
+                                @RequestParam String color) {
+
+        vehicleService.updateVehicle(vehicleNumber, ownerName.trim(), color.trim());
+        return "redirect:/vehicles";
+    }
+
     @PostMapping("/vehicles/search")
     public String searchVehicle(@RequestParam String vehicleNumber, Model model) {
         Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber.trim());
