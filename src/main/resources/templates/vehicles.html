@@ -18,6 +18,7 @@
         <th>Owner Name</th>
         <th>Color</th>
         <th>Type</th>
+        <th>Action</th>
     </tr>
 
     <tr th:each="v : ${vehicles}">
@@ -25,6 +26,12 @@
         <td th:text="${v.ownerName}"></td>
         <td th:text="${v.color}"></td>
         <td th:text="${v.type}"></td>
+        <td>
+            <a th:href="@{/vehicles/delete(vehicleNumber=${v.vehicleNumber})}"
+               onclick="return confirm('Are you sure you want to delete this vehicle?')">
+                Delete
+            </a>
+        </td>
     </tr>
 </table>
 </body>

@@ -38,6 +38,12 @@ public class VehicleController {
         return "searchVehicle";
     }
 
+    @GetMapping("/vehicles/delete")
+    public String deleteVehicle(@RequestParam String vehicleNumber) {
+        vehicleService.deleteVehicle(vehicleNumber);
+        return "redirect:/vehicles";
+    }
+
     @PostMapping("/vehicles/search")
     public String searchVehicle(@RequestParam String vehicleNumber, Model model) {
         Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber.trim());
