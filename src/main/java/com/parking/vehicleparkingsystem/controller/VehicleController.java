@@ -33,6 +33,19 @@ public class VehicleController {
         return "addVehicle";
     }
 
+    @GetMapping("/vehicles/search")
+    public String showSearchPage() {
+        return "searchVehicle";
+    }
+
+    @PostMapping("/vehicles/search")
+    public String searchVehicle(@RequestParam String vehicleNumber, Model model) {
+        Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber.trim());
+        model.addAttribute("searchedVehicle", vehicle);
+        model.addAttribute("searchedNumber", vehicleNumber);
+        return "searchVehicle";
+    }
+
     @PostMapping("/vehicles/add")
     public String addVehicle(@RequestParam String type,
                              @RequestParam String vehicleNumber,
