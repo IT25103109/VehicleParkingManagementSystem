@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Vehicle Summary</title>
+</head>
+<body>
+<h1>Vehicle Summary</h1>
+
+<a href="/">Home</a> |
+<a href="/vehicles">View Vehicles</a> |
+<a href="/vehicles/add">Add Vehicle</a> |
+<a href="/vehicles/search">Search Vehicle</a>
+
+<br><br>
+
+<h3>Total Vehicles: <span th:text="${totalVehicles}"></span></h3>
+
+<table border="1">
+  <tr>
+    <th>Vehicle Type</th>
+    <th>Count</th>
+  </tr>
+
+  <tr th:each="entry : ${summary}">
+    <td th:text="${entry.key}"></td>
+    <td th:text="${entry.value}"></td>
+  </tr>
+</table>
+</body>
+</html>

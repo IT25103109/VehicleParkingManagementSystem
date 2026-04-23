@@ -56,6 +56,13 @@ public class VehicleController {
         return "editVehicle";
     }
 
+    @GetMapping("/vehicles/summary")
+    public String showVehicleSummary(Model model) {
+        model.addAttribute("summary", vehicleService.getVehicleCountSummary());
+        model.addAttribute("totalVehicles", vehicleService.getAllVehicles().size());
+        return "vehicleSummary";
+    }
+
     @PostMapping("/vehicles/update")
     public String updateVehicle(@RequestParam String vehicleNumber,
                                 @RequestParam String ownerName,
