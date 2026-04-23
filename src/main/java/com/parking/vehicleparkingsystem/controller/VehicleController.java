@@ -40,7 +40,7 @@ public class VehicleController {
                              @RequestParam String color,
                              Model model) {
 
-        Vehicle vehicle = createVehicleByType(type, vehicleNumber, ownerName, color);
+        Vehicle vehicle = createVehicleByType(type, vehicleNumber.trim(), ownerName.trim(), color.trim());
 
         if (vehicle == null) {
             model.addAttribute("error", "Invalid vehicle type.");
