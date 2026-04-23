@@ -23,61 +23,30 @@ public class VehicleController {
     private VehicleService vehicleService;
 
     @GetMapping("/vehicles")
-    public String showVehicles(Model model) {
+    public String showVehicles(@RequestParam(required = false) String success,
+                               @RequestParam(required = false) String error,
+                               Model model) {
+
         model.addAttribute("vehicles", vehicleService.getAllVehicles());
+
+        if ("added".equals(success)) {
+            model.addAttribute("message", "Vehicle added successfully.");
+        } else if ("updated".equals(success)) {
+            model.addAttribute("message", "Vehicle updated successfully.");
+        } else if ("deleted".equals(success)) {
+            model.addAttribute("message", "Vehicle deleted successfully.");
+        }
+
+        if ("notfound".equals(error)) {
+            model.addAttribute("errorMessage", "Vehicle not found.");
+        }
+
         return "vehicles";
     }
 
     @GetMapping("/vehicles/add")
     public String showAddVehicleForm() {
         return "addVehicle";
-    }
-
-    @GetMapping("/vehicles/search")
-    public String showSearchPage() {
-        return "searchVehicle";
-    }
-
-    @GetMapping("/vehicles/delete")
-    public String deleteVehicle(@RequestParam String vehicleNumber) {
-        vehicleService.deleteVehicle(vehicleNumber);
-        return "redirect:/vehicles";
-    }
-
-    @GetMapping("/vehicles/edit")
-    public String showEditVehicleForm(@RequestParam String vehicleNumber, Model model) {
-        Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber);
-
-        if (vehicle == null) {
-            return "redirect:/vehicles";
-        }
-
-        model.addAttribute("vehicle", vehicle);
-        return "editVehicle";
-    }
-
-    @GetMapping("/vehicles/summary")
-    public String showVehicleSummary(Model model) {
-        model.addAttribute("summary", vehicleService.getVehicleCountSummary());
-        model.addAttribute("totalVehicles", vehicleService.getAllVehicles().size());
-        return "vehicleSummary";
-    }
-
-    @PostMapping("/vehicles/update")
-    public String updateVehicle(@RequestParam String vehicleNumber,
-                                @RequestParam String ownerName,
-                                @RequestParam String color) {
-
-        vehicleService.updateVehicle(vehicleNumber, ownerName.trim(), color.trim());
-        return "redirect:/vehicles";
-    }
-
-    @PostMapping("/vehicles/search")
-    public String searchVehicle(@RequestParam String vehicleNumber, Model model) {
-        Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber.trim());
-        model.addAttribute("searchedVehicle", vehicle);
-        model.addAttribute("searchedNumber", vehicleNumber);
-        return "searchVehicle";
     }
 
     @PostMapping("/vehicles/add")
@@ -101,7 +70,64 @@ public class VehicleController {
             return "addVehicle";
         }
 
-        return "redirect:/vehicles";
+        return "redirect:/vehicles?success=added";
+    }
+
+    @GetMapping("/vehicles/search")
+    public String showSearchPage() {
+        return "searchVehicle";
+    }
+
+    @PostMapping("/vehicles/search")
+    public String searchVehicle(@RequestParam String vehicleNumber, Model model) {
+        Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber.trim());
+        model.addAttribute("searchedVehicle", vehicle);
+        model.addAttribute("searchedNumber", vehicleNumber);
+        return "searchVehicle";
+    }
+
+    @GetMapping("/vehicles/edit")
+    public String showEditVehicleForm(@RequestParam String vehicleNumber, Model model) {
+        Vehicle vehicle = vehicleService.searchVehicle(vehicleNumber);
+
+        if (vehicle == null) {
+            return "redirect:/vehicles?error=notfound";
+        }
+
+        model.addAttribute("vehicle", vehicle);
+        return "editVehicle";
+    }
+
+    @PostMapping("/vehicles/update")
+    public String updateVehicle(@RequestParam String vehicleNumber,
+                                @RequestParam String ownerName,
+                                @RequestParam String color) {
+
+        boolean updated = vehicleService.updateVehicle(vehicleNumber, ownerName.trim(), color.trim());
+
+        if (updated) {
+            return "redirect:/vehicles?success=updated";
+        } else {
+            return "redirect:/vehicles?error=notfound";
+        }
+    }
+
+    @GetMapping("/vehicles/delete")
+    public String deleteVehicle(@RequestParam String vehicleNumber) {
+        boolean deleted = vehicleService.deleteVehicle(vehicleNumber);
+
+        if (deleted) {
+            return "redirect:/vehicles?success=deleted";
+        } else {
+            return "redirect:/vehicles?error=notfound";
+        }
+    }
+
+    @GetMapping("/vehicles/summary")
+    public String showVehicleSummary(Model model) {
+        model.addAttribute("summary", vehicleService.getVehicleCountSummary());
+        model.addAttribute("totalVehicles", vehicleService.getAllVehicles().size());
+        return "vehicleSummary";
     }
 
     private Vehicle createVehicleByType(String type, String vehicleNumber, String ownerName, String color) {

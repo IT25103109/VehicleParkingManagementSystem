@@ -10,7 +10,11 @@
 <a href="/vehicles/add">Add Vehicle</a> |
 <a href="/vehicles/search">Search Vehicle</a> |
 <a href="/vehicles/summary">Vehicle Summary</a>
+
 <br><br>
+
+<p th:if="${message}" th:text="${message}" style="color:green; font-weight:bold;"></p>
+<p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red; font-weight:bold;"></p>
 
 <table border="1">
     <tr>
