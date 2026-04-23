@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Search Vehicle</title>
+</head>
+<body>
+<h1>Search Vehicle</h1>
+
+<a href="/">Home</a> |
+<a href="/vehicles">View Vehicles</a> |
+<a href="/vehicles/add">Add Vehicle</a>
+
+<br><br>
+
+<form action="/vehicles/search" method="post">
+  <label for="vehicleNumber">Vehicle Number:</label>
+  <input type="text" id="vehicleNumber" name="vehicleNumber" required>
+  <button type="submit">Search</button>
+</form>
+
+<br>
+
+<div th:if="${searchedVehicle != null}">
+  <h3>Vehicle Found</h3>
+  <p><strong>Vehicle Number:</strong> <span th:text="${searchedVehicle.vehicleNumber}"></span></p>
+  <p><strong>Owner Name:</strong> <span th:text="${searchedVehicle.ownerName}"></span></p>
+  <p><strong>Color:</strong> <span th:text="${searchedVehicle.color}"></span></p>
+  <p><strong>Type:</strong> <span th:text="${searchedVehicle.type}"></span></p>
+</div>
+
+<div th:if="${searchedVehicle == null and searchedNumber != null}">
+  <p style="color:red;">Vehicle not found.</p>
+</div>
+</body>
+</html>

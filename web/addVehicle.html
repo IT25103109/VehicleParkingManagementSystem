@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Vehicle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-badge">Dashboard</span>
+            <h1>Vehicle Manager</h1>
+            <p>Modern frontend demo for vehicle parking management.</p>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">🏠 Home</a>
+            <a href="addVehicle.html" class="nav-link active">➕ Add Vehicle</a>
+            <a href="searchVehicle.html" class="nav-link">🔍 Search Vehicle</a>
+            <a href="viewVehicles.html" class="nav-link">📋 View Vehicles</a>
+        </nav>
+
+        <div class="sidebar-widget">
+            <span class="widget-label">Live Time</span>
+            <div id="liveClock" class="live-clock">--:--:--</div>
+            <div id="liveDate" class="live-date">--</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h2>Add Vehicle</h2>
+                <p>Save a new vehicle with a cleaner, more guided form.</p>
+            </div>
+            <div class="header-pill">Live Preview</div>
+        </div>
+
+        <section class="content-card card-section">
+            <div class="two-column-layout">
+                <div>
+                    <form id="vehicleForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="type">Vehicle Type</label>
+                            <select id="type">
+                                <option value="">Select vehicle type</option>
+                                <option value="Car">Car</option>
+                                <option value="Bike">Bike</option>
+                                <option value="Van">Van</option>
+                                <option value="Bus">Bus</option>
+                                <option value="Lorry">Lorry</option>
+                                <option value="ThreeWheeler">ThreeWheeler</option>
+                                <option value="SUV">SUV</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vehicleNumber">Vehicle Number</label>
+                            <input type="text" id="vehicleNumber" placeholder="Ex: CAB-1234">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ownerName">Owner Name</label>
+                            <input type="text" id="ownerName" placeholder="Enter owner name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="color">Color</label>
+                            <input type="text" id="color" placeholder="Ex: White">
+                        </div>
+
+                        <div class="button-row">
+                            <button type="submit" class="btn primary-btn">Save Vehicle</button>
+                            <a href="index.html" class="btn secondary-btn">Back to Home</a>
+                        </div>
+                    </form>
+
+                    <div id="message" class="message-box"></div>
+                </div>
+
+                <div class="preview-card">
+                    <div class="section-row">
+                        <h3>Live Preview</h3>
+                        <span class="mini-badge">Auto Update</span>
+                    </div>
+
+                    <div class="preview-grid">
+                        <div class="preview-item">
+                            <span class="preview-label">Type</span>
+                            <span id="previewType" class="preview-value">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Vehicle Number</span>
+                            <span id="previewNumber" class="preview-value">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Owner</span>
+                            <span id="previewOwner" class="preview-value">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Color</span>
+                            <span id="previewColor" class="preview-value">-</span>
+                        </div>
+                    </div>
+
+                    <div class="tips-card">
+                        <h4>Tips</h4>
+                        <ul>
+                            <li>Use a unique vehicle number.</li>
+                            <li>Choose the correct type from the list.</li>
+                            <li>Keep owner name and color clear.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

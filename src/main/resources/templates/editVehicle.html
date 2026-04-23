@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Vehicle</title>
+</head>
+<body>
+<h1>Edit Vehicle</h1>
+
+<a href="/">Home</a> |
+<a href="/vehicles">View Vehicles</a> |
+<a href="/vehicles/add">Add Vehicle</a>
+
+<br><br>
+
+<form action="/vehicles/update" method="post">
+  <label for="vehicleNumber">Vehicle Number:</label>
+  <input type="text" id="vehicleNumber" name="vehicleNumber"
+         th:value="${vehicle.vehicleNumber}" readonly>
+
+  <br><br>
+
+  <label for="ownerName">Owner Name:</label>
+  <input type="text" id="ownerName" name="ownerName"
+         th:value="${vehicle.ownerName}" required>
+
+  <br><br>
+
+  <label for="color">Color:</label>
+  <input type="text" id="color" name="color"
+         th:value="${vehicle.color}" required>
+
+  <br><br>
+
+  <button type="submit">Update Vehicle</button>
+</form>
+</body>
+</html>

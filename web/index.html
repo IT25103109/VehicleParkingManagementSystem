@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Parking Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-badge">Dashboard</span>
+            <h1>Vehicle Manager</h1>
+            <p>Modern frontend demo for vehicle parking management.</p>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">🏠 Home</a>
+            <a href="addVehicle.html" class="nav-link">➕ Add Vehicle</a>
+            <a href="searchVehicle.html" class="nav-link">🔍 Search Vehicle</a>
+            <a href="viewVehicles.html" class="nav-link">📋 View Vehicles</a>
+        </nav>
+
+        <div class="sidebar-widget">
+            <span class="widget-label">Live Time</span>
+            <div id="liveClock" class="live-clock">--:--:--</div>
+            <div id="liveDate" class="live-date">--</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h2>Dashboard Overview</h2>
+                <p>Quick access, live summaries, and recent activity.</p>
+            </div>
+            <div class="header-pill">Frontend Prototype</div>
+        </div>
+
+        <section class="content-card card-section">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="number" id="dashboardTotal">0</span>
+                    <span class="label">Total Vehicles</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" id="dashboardCars">0</span>
+                    <span class="label">Cars</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" id="dashboardBikes">0</span>
+                    <span class="label">Bikes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number" id="dashboardLarge">0</span>
+                    <span class="label">Large Vehicles</span>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <a href="addVehicle.html" class="dashboard-box">
+                    <div class="box-icon">➕</div>
+                    <h3>Add Vehicle</h3>
+                    <p>Create a new vehicle record with type, number, owner, and color details.</p>
+                </a>
+
+                <a href="searchVehicle.html" class="dashboard-box">
+                    <div class="box-icon">🔍</div>
+                    <h3>Search Vehicle</h3>
+                    <p>Search quickly by vehicle number and view saved details instantly.</p>
+                </a>
+
+                <a href="viewVehicles.html" class="dashboard-box">
+                    <div class="box-icon">📋</div>
+                    <h3>View Vehicles</h3>
+                    <p>Browse all vehicles, filter records, and use edit or delete actions.</p>
+                </a>
+            </div>
+
+            <div class="recent-activity-card top-space">
+                <div class="section-row">
+                    <h3>Recent Activity</h3>
+                    <span class="mini-badge">Live</span>
+                </div>
+                <ul id="recentActivityList" class="activity-list"></ul>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
